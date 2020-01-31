@@ -1,32 +1,92 @@
-/**
- * Zagniezdzanie funkcji.
- * Przesledz krok po kroku kazda linijke kodu. Kazda!
- * Napisz komentarze dla kazdej z linijek kodu
- */
-
-
-//Twoj komentarz ...
+// Zadanie 0
+// stworzenie funkcji "jeden"
 function jeden() {
 
-    //Twoj komentarz ...
+    // przypisanie do zmiennej "zmienna1" wartości 1
     var zmienna1 = 1;
 
-    //Twoj komentarz ...
+    // stworzenie funkcji "dwa"
     function dwa() {
 
-        //Twoj komentarz ...
+        // wyświetlenie wartości zmiennej "zmienna1"
         console.log(zmienna1);
 
-        //Twoj komentarz ...
+        // przypisanie do zmiennej "zmienna2" wartości 3, zmienna jest widoczna tylko dla funkcji dwa
         var zmienna2 = 3;
     }
 
-    //Twoj komentarz ...
+    // wywołanie funkcji "dwa"
     dwa();
 
-    //Twoj komentarz ...
-    console.log(zmienna2)
+    // wyświetlenie wartości zmiennej "zmienna2", zmienna nie jest widoczna
+    //console.log(zmienna2);
+}
+// "zmienna2" nie jest widoczna w funkcji "jeden", ponieważ jest to zmienna lokalna widoczna tylko dla funkcji "dwa", która jest wewnątrz funkcji "jeden"
+// wywołanie funkcji "jeden"
+jeden();
+
+// Zadanie 1
+// stworzenie funkcji "sortArray"
+function sortArray() {
+
+    // stworzenie tablicy "points" z liczbami całkowitymi
+    var points = [41, 3, 6, 1, 114, 54, 64];
+
+    // sortowanie tablicy "points" za pomocą funkcji "sort"
+    points.sort(function (a, b) {
+        // sortowanie tablicy rosnąco poprzez badanie różnicy dwóch sąsiadujących elementów tablicy
+        return a - b;
+    });
+
+    // zwracanie tablicy do funkcji
+    return points;
 }
 
-//Twoj komentarz ...
-jeden()
+// wywołanie funkcji "sortArray"
+sortArray();
+
+// Zadanie 2
+function callOtherFunction(nameOfFunction) {
+    console.log("Cześć jestem funkcją o nazwie 'callOtherFunction' i wywołuję funkcję, którą ktoś mi wrzucił jako parametr");
+
+    var randomNumber1 = Math.random() * 20;
+    var randomNumber2 = Math.random() * 10;
+    nameOfFunction(randomNumber1, randomNumber2);
+}
+
+callOtherFunction(function (a, b) {
+    console.log("Pierwsza liczba:", a);
+    console.log("Druga liczba", b)
+    console.log("Wynik", a + b)
+});
+
+callOtherFunction(function (a, b) {
+    console.log("Pierwsza liczba:", a);
+    console.log("Druga liczba", b)
+    console.log("Wynik", a * b)
+});
+
+callOtherFunction(function (a, b) {
+	console.log("Pierwsza liczba:", a);
+    console.log("Druga liczba", b)
+    console.log("Mniejsza liczba ", Math.min(a, b));
+});
+
+callOtherFunction(function (a, b) {
+	console.log("Pierwsza liczba:", a);
+    console.log("Druga liczba", b)
+    console.log("Pierwsza liczba do potęgi drugiej ", Math.pow(a, b));
+});
+
+// Zadanie 3
+sayHello(); // funkcja wywoła się, gdyż funkcja jest definiowana zanim kod zostanie wykonany
+function sayHello() {
+	console.log("Cześć");
+}
+sayHello(); // funkcja wywoła się normalnie
+
+//sayHelloV2(); // funkcja nie wywyoła się, gdyż funkcja jest definiowana w trakcie wykonywania kodu
+var sayHelloV2 = function () {
+	console.log("Witaj");
+}
+sayHelloV2(); // funkcja wywoła się normalnie
